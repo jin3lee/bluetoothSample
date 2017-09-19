@@ -12,12 +12,16 @@ import {
   View
 } from 'react-native';
 
+import { NativeModules } from 'react-native';
+
 export default class bluetoothSample extends Component {
   render() {
+       {NativeModules.BluetoothModule.printTest()}
+            {NativeModules.BluetoothModule.connect()}
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Welcome to React Native!!!
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.android.js
