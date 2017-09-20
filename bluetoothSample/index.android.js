@@ -17,11 +17,30 @@ import { NativeModules } from 'react-native';
 export default class bluetoothSample extends Component {
   render() {
        {NativeModules.BluetoothModule.printTest()}
-            {NativeModules.BluetoothModule.connect()}
+
+       var isBluetoothConnected = "";
+        {NativeModules.BluetoothModule.connect()}
+        {
+            NativeModules.BluetoothModule.isConnected
+            (
+                (error) =>
+                {
+                    console.log("<Text>false</Text>");
+                    isBluetoothConnected = "false";
+                },
+                (success) =>
+                {
+                    console.log("<Text>true</Text>");
+                    isBluetoothConnected = "true";
+                    console.log("bluetoooooth: " + isBluetoothConnected);
+                },
+            )
+        }
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!!!
+          Bluetooth Connection Available: {isBluetoothConnected}
+
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.android.js
